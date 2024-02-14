@@ -90,23 +90,41 @@ int main()
 									}
 									if (evt2.key.code == sf::Keyboard::Enter) {
 										int itera = 1;
-										for (int i = 0; i < sortwindow.getListaBarras().size(); i++) {
-											for (int j = 0; j < sortwindow.getListaBarras().size() - 1; j++) {
-												if (sortwindow.getListaBarras()[j].getSize().y > sortwindow.getListaBarras()[j + 1].getSize().y) {
-													sortwindow.setColorBar(j);
-													sortwindow.swap(j);
-													sf::sleep(sf::milliseconds(10));
-													sortwindow.setDefaultColorBar(j);
-													sortwindow.setDefaultColorBar(j+1);
+										sf::Text tit = texto;
+										tit.setFont(font);
+										tit.setPosition(20, 20);
+										tit.setCharacterSize(30);
+										if (tit.getString() == "2. Bubble sort") {
+											for (int i = 0; i < sortwindow.getListaBarras().size(); i++) {
+												for (int j = 0; j < sortwindow.getListaBarras().size() - 1; j++) {
+													if (sortwindow.getListaBarras()[j].getSize().y > sortwindow.getListaBarras()[j + 1].getSize().y) {
 
-
-
+														sortwindow.swap(j, j+1);
+														sf::sleep(sf::milliseconds(10));
+													}
+													sort.clear();
+													sort.draw(tit);
+													sortwindow.Draw(sort);
+													sort.display();
 												}
-												sort.clear();
-												sortwindow.Draw(sort);
-												sort.display();
+
 											}
-											
+										}
+										if (tit.getString() == "1. Selection sort") {
+											for (int i = 0; i < sortwindow.getListaBarras().size() - 1; i++) {
+												int min_idx = i;
+												for (int j = i + 1; j < sortwindow.getListaBarras().size(); j++) {
+													if (sortwindow.getListaBarras()[j].getSize().y < sortwindow.getListaBarras()[min_idx].getSize().y) {
+														sortwindow.swap(j, min_idx);
+														sf::sleep(sf::milliseconds(20));
+													}
+													sort.clear();
+													sort.draw(tit);
+													sortwindow.Draw(sort);
+													sort.display();
+												}
+
+											}
 										}
 									}
 								}
