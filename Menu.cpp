@@ -11,20 +11,20 @@ Menu::Menu(float width, float height)
 	menu[0].setFillColor(sf::Color::White);
 	menu[0].setString("Cantidad para el sort");
 	menu[0].setCharacterSize(30);
-	menu[0].setPosition(50,150);
+	menu[0].setPosition(50,250);
 
 	//opcion 2
 	menu[1].setFont(font);
 	menu[1].setFillColor(sf::Color::White);
 	menu[1].setString("Tipo de Sorting");
 	menu[1].setCharacterSize(30);
-	menu[1].setPosition(50, 300);
+	menu[1].setPosition(50, 400);
 	//Exit
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::White);
-	menu[2].setString("Salir");
+	menu[2].setString("Comenzar");
 	menu[2].setCharacterSize(30);
-	menu[2].setPosition(50, 450);
+	menu[2].setPosition(50, 550);
 
 	MenuSelected = -1;
 }

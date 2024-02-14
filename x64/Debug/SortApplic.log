@@ -1,2 +1,17 @@
-﻿  SeleccionMultiple.cpp
+﻿  SortApplic.cpp
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,48): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,48): warning C4244:         with
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,48): warning C4244:         [
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,48): warning C4244:             T=unsigned int
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,48): warning C4244:         ]
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,28): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,28): warning C4244:         with
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,28): warning C4244:         [
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,28): warning C4244:             T=unsigned int
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(13,28): warning C4244:         ]
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(78,47): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(78,47): warning C4244:         with
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(78,47): warning C4244:         [
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(78,47): warning C4244:             T=unsigned int
+C:\Proyects\SortApplic\SortApplic\SortApplic.cpp(78,47): warning C4244:         ]
   SortApplic.vcxproj -> C:\Proyects\SortApplic\x64\Debug\SortApplic.exe

@@ -6,34 +6,49 @@
 #include "Menu.h"
 #include "inputNumerico.h"
 #include "SeleccionMultiple.h"
+#include "SortWindow.h"
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(960, 720), "Sort App", sf::Style::Default);
 	Menu menu(window.getSize().x, window.getSize().y);
 	int opcionElegida = 0;
 	sf::Text valor;
+	sf::Text titulo;
 	sf::Font font;
+	sf::Vector2f posInputNumerico(500, 275);
+	sf::Vector2f posSeleccionMultiple(500, 420);
+	sf::Text texto;
+	sf::Font fontTitulo;
+	fontTitulo.loadFromFile("titulo.ttf");
 	font.loadFromFile("fuente.ttf");
 	valor.setFont(font);
-	valor.setPosition(805, 155);
+	valor.setPosition(805, 255);
 	valor.setCharacterSize(23);
 	valor.setString("0");
 	valor.setFillColor(sf::Color::Magenta);
-	sf::Vector2f posInputNumerico(500,170);
-	sf::Vector2f posSeleccionMultiple(500, 320);
 	inputNumerico input(posInputNumerico);
 	SeleccionMultiple selec(posSeleccionMultiple);
-	std::string sortingAlgorithms[] = {
-		"1- Selection sort (selección)",
-		"2- Bubble sort (burbuja)",
-		"3- Insertion sort (inserción)",
-		"4- Merge sort (combinación)",
-		"5- Quick sort (rápida)",
-		"6- Heap sort (montón)",
-		"7- Counting sort (conteo)",
-		"8- Radix sort (raíz)",
-		"9- Bucket sort (cubo)"
+	std::vector<std::string> algoritmos = {
+		"1. Selection sort",
+		"2. Bubble sort",
+		"3. Insertion sort",
+		"4. Merge sort",
+		"5. Quick sort",
+		"6. Heap sort",
+		"7. Counting sort",
+		"8. Radix sort",
+		"9. Bucket sort"
 	};
+	texto.setFillColor(sf::Color::Magenta);
+	texto.setFont(font);
+	texto.setCharacterSize(25);
+	texto.setPosition(550, 403);
+	texto.setString("1. Selection sort");
+	titulo.setFillColor(sf::Color::Magenta);
+	titulo.setFont(fontTitulo);
+	titulo.setCharacterSize(50);
+	titulo.setPosition(140, 80);
+	titulo.setString("Sorting Visualizator");
 
 	while (window.isOpen())
 	{
@@ -43,7 +58,6 @@ int main()
 			if (evt.type == sf::Event::Closed) {
 				window.close();
 			}
-
 			if (evt.type == sf::Event::KeyPressed) {
 				if (evt.key.code == sf::Keyboard::Up) {
 					menu.MoveUp();
@@ -60,11 +74,49 @@ int main()
 					break;
 				}
 				if (evt.key.code == sf::Keyboard::Enter) {
-					if (opcionElegida == 1) {
-						menu.setTextColor(1, sf::Color::Yellow);
-					}
+					sf::RenderWindow sort(sf::VideoMode(960, 720), "Sort App", sf::Style::Default);
+					SortWindow sortwindow(960, sort.getSize().y, input.getValor());
+
 					if (opcionElegida == 2) {
-						window.close();
+						while (sort.isOpen()) {
+							sf::Event evt2;
+							while (sort.pollEvent(evt2)) {
+								if (evt2.type == sf::Event::Closed) {
+									sort.close();
+								}
+								if (evt2.type == sf::Event::KeyReleased) {
+									if (evt2.key.code == sf::Keyboard::Escape) {
+										sort.close();
+									}
+									if (evt2.key.code == sf::Keyboard::Enter) {
+										int itera = 1;
+										for (int i = 0; i < sortwindow.getListaBarras().size(); i++) {
+											for (int j = 0; j < sortwindow.getListaBarras().size() - 1; j++) {
+												if (sortwindow.getListaBarras()[j].getSize().y > sortwindow.getListaBarras()[j + 1].getSize().y) {
+													sortwindow.setColorBar(j);
+													sortwindow.swap(j);
+													sf::sleep(sf::milliseconds(10));
+													sortwindow.setDefaultColorBar(j);
+													sortwindow.setDefaultColorBar(j+1);
+
+
+
+												}
+												sort.clear();
+												sortwindow.Draw(sort);
+												sort.display();
+											}
+											
+										}
+									}
+								}
+
+								
+							}
+							sort.clear();
+							sortwindow.Draw(sort);
+							sort.display();
+						}
 					}
 				}
 				else if ((evt.key.code == sf::Keyboard::Left) && (opcionElegida == 0) && (input.getPerilla().getPosition().x > input.getMinPos())) {
@@ -78,9 +130,11 @@ int main()
 				else if ((evt.key.code == sf::Keyboard::Left) && (opcionElegida == 1)) {
 					selec.moverIzquierda();
 					selec.setTrianguloIzqColor();
+					texto.setString(algoritmos[selec.getActual()]);
 				}
 				else if ((evt.key.code == sf::Keyboard::Right) && (opcionElegida == 1)) {
 					selec.moverDerecha();
+					texto.setString(algoritmos[selec.getActual()]);
 					selec.setTrianguloDerColor();
 				}
 				else if ((opcionElegida == 2)) {
@@ -90,10 +144,15 @@ int main()
 		window.clear();
 		menu.Draw(window);
 		input.Draw(window);
-		selec.draw(window);
+		selec.draw(window); 
+		window.draw(texto);
+		window.draw(titulo);
 		window.draw(valor);
 		window.display();
+
 	}
 
 }
+
+
 

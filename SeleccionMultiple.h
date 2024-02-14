@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class SeleccionMultiple
+
 {
 public:
 	SeleccionMultiple(sf::Vector2f pos);
@@ -14,11 +16,10 @@ public:
 	void setTriangulosDef();
 
 private:
-	sf::Text algoritmos[9];
 	int actual;
 	sf::RectangleShape cuadro;
 	sf::CircleShape trianguloIzq;
 	sf::CircleShape trianguloDer;
-
+	sf::Text texto;
 };
 

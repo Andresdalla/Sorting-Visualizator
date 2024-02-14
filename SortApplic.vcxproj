@@ -138,6 +138,7 @@
     <ClCompile Include="MenuElegirParams.cpp" />
     <ClCompile Include="SeleccionMultiple.cpp" />
     <ClCompile Include="SortApplic.cpp" />
+    <ClCompile Include="SortWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inicio.h" />
@@ -145,7 +146,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuElegirParams.h" />
     <ClInclude Include="SeleccionMultiple.h" />
-    <ClInclude Include="TextBox.h" />
+    <ClInclude Include="SortWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

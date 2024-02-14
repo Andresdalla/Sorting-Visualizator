@@ -25,23 +25,6 @@ SeleccionMultiple::SeleccionMultiple(sf::Vector2f pos)
 	if (!font.loadFromFile("fuente.ttf")) {
 		std::cout << "No hay fuente";
 	}
-	std::string sortingAlgorithms[] = {
-		"1- Selection sort (selección)",
-		"2- Bubble sort (burbuja)",
-		"3- Insertion sort (inserción)",
-		"4- Merge sort (combinación)",
-		"5- Quick sort (rápida)",
-		"6- Heap sort (montón)",
-		"7- Counting sort (conteo)",
-		"8- Radix sort (raíz)",
-		"9- Bucket sort (cubo)"
-	};
-	for (int i = 0; i < 8; ++i) {
-		algoritmos[i].setString(sortingAlgorithms[i]);
-		algoritmos[i].setCharacterSize(30);
-		algoritmos[i].setFillColor(sf::Color::Magenta);
-		algoritmos[i].setPosition(250, 334);
-	}
 }
 
 void SeleccionMultiple::draw(sf::RenderWindow& window)
@@ -49,13 +32,11 @@ void SeleccionMultiple::draw(sf::RenderWindow& window)
 	window.draw(cuadro);
 	window.draw(trianguloDer);
 	window.draw(trianguloIzq);
-	window.draw(algoritmos[2]);
-
 }
 
 void SeleccionMultiple::moverDerecha()
 {
-	if (actual <= 9) {
+	if (actual < 8) {
 		actual++;
 	}
 	else {
@@ -65,11 +46,11 @@ void SeleccionMultiple::moverDerecha()
 
 void SeleccionMultiple::moverIzquierda()
 {
-	if (actual >= 0) {
+	if (actual > 0) {
 		actual--;
 	}
 	else {
-		actual = 9;
+		actual = 8;
 	}
 }
 
