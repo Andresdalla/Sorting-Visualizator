@@ -19,6 +19,7 @@ int main()
 	sf::Vector2f posSeleccionMultiple(500, 420);
 	sf::Text texto;
 	sf::Font fontTitulo;
+	sf::Text aviso;
 	fontTitulo.loadFromFile("titulo.ttf");
 	font.loadFromFile("fuente.ttf");
 	valor.setFont(font);
@@ -49,7 +50,11 @@ int main()
 	titulo.setCharacterSize(50);
 	titulo.setPosition(140, 80);
 	titulo.setString("Sorting Visualizator");
-
+	aviso.setFillColor(sf::Color::Magenta);
+	aviso.setFont(font);
+	aviso.setCharacterSize(20);
+	aviso.setPosition(window.getSize().x -800, window.getSize().y - 30);
+	aviso.setString("Solo disponibles bubble y selection sort. Sigue en desarrollo");
 	while (window.isOpen())
 	{
 		sf::Event evt;
@@ -126,6 +131,7 @@ int main()
 
 											}
 										}
+										
 									}
 								}
 
@@ -166,6 +172,7 @@ int main()
 		window.draw(texto);
 		window.draw(titulo);
 		window.draw(valor);
+		window.draw(aviso);
 		window.display();
 
 	}

@@ -35,7 +35,6 @@ void SortWindow::Draw(sf::RenderWindow& window)
 
 void SortWindow::swap(int i,int j)
 {
-	barras[i].setFillColor(sf::Color::Green);
 	sf::RectangleShape temp = barras[i];
 	float tempX = barras[i].getPosition().x;
 	float nextBarX = barras[j].getPosition().x;
@@ -43,8 +42,6 @@ void SortWindow::swap(int i,int j)
 	barras[j] = temp;
 	barras[i].setPosition(tempX, barras[i].getPosition().y);
 	barras[j].setPosition(nextBarX, barras[j].getPosition().y);
-	barras[i].setFillColor(sf::Color::Magenta);
-	barras[j].setFillColor(sf::Color::Green);
 }
 
 std::vector<sf::RectangleShape> SortWindow::getListaBarras()
